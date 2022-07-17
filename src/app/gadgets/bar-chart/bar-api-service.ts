@@ -11,7 +11,7 @@ export class BarApiService {
  */
 
   //use MOCK api endpoint
-  apiEndPoint = "/assets/api/_metrics/pull-requests/mock.json";
+  apiEndPoint = "/assets/api/_metrics/metric-a/mock.json";
 
   constructor(private httpClient: HttpClient) { }
 
