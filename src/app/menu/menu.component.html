@@ -1,10 +1,3 @@
-<!--
-<p>
-    <mat-toolbar>
-        <span>Packaging Line Manager</span>
-    </mat-toolbar>
-</p>
--->
 
 <mat-toolbar color="primary">
   <span *checkPermissions>
@@ -13,28 +6,28 @@
     </button>
   </span>
 
-  <span>Packaging Line Manager</span>
+  <span>{{bannerLabel}}</span>
   <span class="example-spacer"></span>
 
   <span *checkPermissions>
-    <span class="menu-text"> (1) Create board</span>
     <button mat-icon-button (click)="openConfigDialog()" class="example-icon"
-      aria-label="Example icon-button with share icon">
+      aria-label="Example icon-button with share icon" #tooltip="matTooltip" matTooltip="Create or edit dashboard"
+      [matTooltipPosition]="position.value!">
       <mat-icon>settings</mat-icon>
     </button>
   </span>
 
   <span *checkPermissions>
-    <span class="menu-text">(2) Add tool</span>
-    <button mat-icon-button (click)="openGadgetLibraryDialog()" aria-label="Example icon-button with heart icon">
+    <button mat-icon-button (click)="openGadgetLibraryDialog()" aria-label="Example icon-button with heart icon"
+      #tooltip="matTooltip" matTooltip="Add tool" [matTooltipPosition]="position.value!">
       <mat-icon>playlist_add</mat-icon>
     </button>
   </span>
 
   <span *checkPermissions>
-    <span class="menu-text"> (3) Change layout</span>
     <button mat-icon-button (click)="toggleLayout()" class="example-icon favorite-icon"
-      aria-label="Example icon-button with heart icon">
+      aria-label="Example icon-button with heart icon" #tooltip="matTooltip" matTooltip="Change board layout"
+      [matTooltipPosition]="position.value!">
       <mat-icon>dashboard</mat-icon>
     </button>
   </span>

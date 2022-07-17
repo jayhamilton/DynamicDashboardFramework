@@ -10,13 +10,12 @@
   </app-gadget-header>
 
   <mat-card-content *ngIf="!inConfig">
-    <ngx-charts-bar-vertical
-      [roundEdges]="false"
+    <ngx-charts-bar-vertical-stacked
       [scheme]="colorScheme"
-      [results]="saleData"
-      [xAxisLabel]="'February Week 3 2022'"
-      [legendTitle]="'Product Lot Chart'"
-      [yAxisLabel]="'Batch Qty'"
+      [results]="data"
+      [xAxisLabel]="xAxisLabel"
+      [legendTitle]="legendTitle"
+      [yAxisLabel]="yAxisLabel"
       [legend]="true"
       [showXAxisLabel]="true"
       [showYAxisLabel]="true"
@@ -24,7 +23,7 @@
       [yAxis]="true"
       [gradient]="true"
     >
-    </ngx-charts-bar-vertical>
+    </ngx-charts-bar-vertical-stacked>
   </mat-card-content>
 
   <mat-card-content *ngIf="inConfig">

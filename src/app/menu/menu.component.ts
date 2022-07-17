@@ -5,6 +5,8 @@ import { environment } from 'src/environments/environment';
 import { ConfigurationComponent } from '../configuration/configuration.component';
 import { EventService } from '../eventservice/event.service';
 import { LibraryComponent } from '../library/library.component';
+import { FormControl } from '@angular/forms';
+import { TooltipPosition } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-menu',
@@ -13,6 +15,9 @@ import { LibraryComponent } from '../library/library.component';
 })
 export class MenuComponent implements OnInit {
   visible = true;
+  positionOptions: TooltipPosition[] = ['below', 'above', 'left', 'right'];
+  position = new FormControl(this.positionOptions[0]);
+  bannerLabel = environment.appBannerLabel;
   constructor(
     public dialog: MatDialog,
     private eventService: EventService,
@@ -21,7 +26,7 @@ export class MenuComponent implements OnInit {
     this.setupEventHandlers();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   setupEventHandlers() {
     this.eventService.listenForLibraryOpenMenuEvent().subscribe(() => {

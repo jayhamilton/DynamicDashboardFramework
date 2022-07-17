@@ -1,0 +1,45 @@
+{
+  "legendTitle": "Branches",
+  "yAxesLabel": "# Merged Pull Requests",
+  "data": [
+    {
+      "name": "May 21 2022",
+      "series": [
+        {
+          "name": "batch-library",
+          "value": 34
+        },
+        {
+          "name": "webapp-fe",
+          "value": 22
+        }
+      ]
+    },
+    {
+      "name": "May 28 2022",
+      "series": [
+        {
+          "name": "batch-library",
+          "value": 25
+        },
+        {
+          "name": "webapp-fe",
+          "value": 20
+        }
+      ]
+    },
+    {
+      "name": "Jun 04 2022",
+      "series": [
+        {
+          "name": "batch-library",
+          "value": 30
+        },
+        {
+          "name": "webapp-fe",
+          "value": 25
+        }
+      ]
+    }
+  ]
+}

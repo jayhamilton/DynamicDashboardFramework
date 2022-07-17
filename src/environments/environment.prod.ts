@@ -5,4 +5,5 @@ export const environment = {
   loginAPI: '/login',
   sessionToken: 'API_KEY',
   demo: true,
+  appBannerLabel: "Dynamic Dashboard Framework"
 };

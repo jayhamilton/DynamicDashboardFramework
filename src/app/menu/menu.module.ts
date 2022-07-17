@@ -9,6 +9,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ConfigurationModule } from '../configuration/configuration.module';
 import { LibraryModule } from '../library/library.module';
 import { RbacDirective } from '../_authorization/rbac.directive';
+import { MatTooltipModule } from '@angular/material/tooltip';
 @NgModule({
   declarations: [MenuComponent, RbacDirective],
   imports: [
@@ -16,6 +17,7 @@ import { RbacDirective } from '../_authorization/rbac.directive';
     MatMenuModule,
     MatButtonModule,
     MatToolbarModule,
+    MatTooltipModule,
     MatIconModule,
     MatDialogModule,
     ConfigurationModule,
