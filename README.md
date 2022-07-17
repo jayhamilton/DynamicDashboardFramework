@@ -1,12 +1,4 @@
-# PlmUi
-
-PlmUI is based on the open source project https://github.com/catalogicsoftware/ngx-dynamic-dashboard-framework I created a few years ago.
-
-This project is a purpose built rewrite of that project, leveraging the latest version of Angular. This project also removes the dependency on Semantic UI in favor of Angular Material Design.
-
-My goal is to get this purpose built version in good enough shape to then fork out to produce a next gen version of NGX-Dynamic-Dashboard-Framework, incorporating all of its gadgets. At least that is my goal :-). The goal of this effort is to produce a simple dashboard framework that can be used for a very specific purpose regarding manufacturing packaging lines.
-
-Live [Demo](https://plm.netlify.app/) Of Work In Progress:
+# Dynamic Dashboard Framework
 
 The keys to this design is that it is purely JSON driven. This is also taking advantage of Angular's [dynamic component](https://angular.io/guide/dynamic-component-loader) functionality that enables the creation of component instances at runtime.
 
