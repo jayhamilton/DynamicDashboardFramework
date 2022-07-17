@@ -2,9 +2,9 @@
 
   {
     "componentType": "BarChartComponent",
-    "title": "Bar Chart Component Component Tool",
+    "title": "Bar Chart Tool",
     "subtitle": "Bar chart tool subtitle",
-    "description": "Select this tool to define and add a Product definition to the production line board.",
+    "description": "Select this tool to graph multiple data sets in a stacked configuration",
     "icon": "../../assets/images/bar-chart.png",
     "instanceId": -1,
     "tags": [],
@@ -51,7 +51,7 @@
     "componentType": "AreaChartComponent",
     "title": "Area Chart Component Component Tool",
     "subtitle": "Area chart tool subtitle",
-    "description": "Select this tool to define and add a Product definition to the production line board.",
+    "description": "Select this tool to graph multiple data sets using an area configuration",
     "icon": "../../assets/images/trend.png",
     "instanceId": -1,
     "tags": [],
