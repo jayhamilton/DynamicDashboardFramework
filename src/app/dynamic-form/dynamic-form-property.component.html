@@ -11,17 +11,7 @@
         <input [formControlName]="property.key" [type]="property.controlType" matInput value="{{ property.value }}"
           required="{{ property.required }}" />
       </mat-form-field>
-      <div *ngSwitchCase="'upload'" appearance="fill">
-        <div class="upload-icon">
-          <mat-icon> cloud_upload </mat-icon>
-        </div>
-        <div class="main-text">
-          Drag Photos Here or
-          <app-file-upload (fileUploadEvent)="updateFileList($event)"></app-file-upload>
-          <input [formControlName]="property.key" [type]="property.controlType" matInput value="{{ property.value }}"
-            required="{{ property.required }}" style="font-size: 10px" />
-        </div>
-      </div>
+
       <div *ngSwitchCase="'date'" apperance="fill">
         <mat-form-field appearance="fill">
           <mat-label>Choose a date</mat-label>

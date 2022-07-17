@@ -10,8 +10,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
-import { FileUploadComponent } from './file-upload/file-upload.component';
-import { ImageUploadService } from './file-upload/file-upload.service';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 
@@ -32,9 +30,9 @@ import { MatNativeDateModule } from '@angular/material/core';
   declarations: [
     DynamicFormComponent,
     DynamicFormPropertyComponent,
-    FileUploadComponent,
+
   ],
-  providers: [PropertyControlService, ImageUploadService, MatDatepickerModule],
+  providers: [PropertyControlService, MatDatepickerModule],
   exports: [DynamicFormComponent, DynamicFormPropertyComponent],
 })
 export class DynamicFormModule {}
