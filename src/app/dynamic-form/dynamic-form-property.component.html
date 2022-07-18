@@ -11,6 +11,12 @@
         <input [formControlName]="property.key" [type]="property.controlType" matInput value="{{ property.value }}"
           required="{{ property.required }}" />
       </mat-form-field>
+      <mat-form-field *ngSwitchCase="'dropdown'" appearance="fill">
+        <mat-label [attr.for]="property.key">{{ property.label }}</mat-label>
+        <mat-select [formControlName]="property.key" required="{{ property.required }}">
+          <mat-option *ngFor="let opt of property.options" [value]="opt.key">{{opt.value}}</mat-option>
+        </mat-select>
+      </mat-form-field>
 
       <div *ngSwitchCase="'date'" apperance="fill">
         <mat-form-field appearance="fill">

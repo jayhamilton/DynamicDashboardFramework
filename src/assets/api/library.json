@@ -1,13 +1,13 @@
 [
-
   {
     "componentType": "BarChartComponent",
-    "title": "Bar Chart Tool",
-    "subtitle": "Bar chart tool subtitle",
+    "title": "Bar Chart",
+    "subtitle": "Bar chart subtitle",
     "description": "Select this tool to graph multiple data sets in a stacked configuration",
     "icon": "../../assets/images/bar-chart.png",
     "instanceId": -1,
     "tags": [],
+    "links": [],
     "propertyPages": [
       {
         "displayName": "Configuration",
@@ -31,10 +31,23 @@
             "order": 1
           },
           {
-            "controlType": "textbox",
+            "controlType": "dropdown",
             "key": "metric",
             "label": "Metric",
-            "value": "",
+            "options": [
+              {
+                "key": "empty",
+                "value": " "
+              },
+              {
+                "key": "pull-request",
+                "value": "Pull Requests"
+              },
+              {
+                "key": "storypoint-completed",
+                "value": "Completed Story Points"
+              }
+            ],
             "required": true,
             "order": 1
           }
@@ -49,12 +62,13 @@
   },
   {
     "componentType": "AreaChartComponent",
-    "title": "Area Chart Component Component Tool",
-    "subtitle": "Area chart tool subtitle",
+    "title": "Area Chart",
+    "subtitle": "Area chart  subtitle",
     "description": "Select this tool to graph multiple data sets using an area configuration",
     "icon": "../../assets/images/trend.png",
     "instanceId": -1,
     "tags": [],
+    "links": [],
     "propertyPages": [
       {
         "displayName": "Configuration",
