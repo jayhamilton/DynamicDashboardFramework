@@ -1,6 +1,18 @@
 {
   "legendTitle": "legend title",
   "yAxesLabel": "# metric a",
+  "links": [
+    {
+      "href": "/topic/micrcontent/metrica",
+      "rel": "microcontent",
+      "type": "GET"
+    },
+    {
+      "href": "/topic/metrica",
+      "rel": "topic",
+      "type": "GET"
+    }
+  ],
   "data": [
     {
       "name": "May 21 2022",

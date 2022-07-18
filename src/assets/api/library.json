@@ -40,12 +40,12 @@
                 "value": " "
               },
               {
-                "key": "pull-request",
-                "value": "Pull Requests"
+                "key": "metric-a",
+                "value": "metric-b"
               },
               {
-                "key": "storypoint-completed",
-                "value": "Completed Story Points"
+                "key": "metric-a",
+                "value": "metric-b"
               }
             ],
             "required": true,
