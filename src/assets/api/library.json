@@ -36,10 +36,6 @@
             "label": "Metric",
             "options": [
               {
-                "key": "empty",
-                "value": " "
-              },
-              {
                 "key": "pull-requests",
                 "value": "pull-requests"
               },
@@ -48,6 +44,7 @@
                 "value": "completed-stories"
               }
             ],
+            "value":"",
             "required": true,
             "order": 1
           }

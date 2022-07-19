@@ -43,6 +43,7 @@ export class BarChartComponent extends GadgetBase implements OnInit {
      */
 
     this.initializeProperties();
+    this.switchColorScheme();
 
     if (this.isMissingPropertyValue()) {
       this.inConfig = true;
@@ -68,6 +69,30 @@ export class BarChartComponent extends GadgetBase implements OnInit {
   }
   remove() {
     this.eventService.emitGadgetDeleteEvent({ data: this.instanceId });
+  }
+
+  switchColorScheme(){
+
+    //todo - this code relies too much on metricType options knowledge
+    switch(this.metricType){
+      case "pull-requests":
+        this.colorScheme = {
+          domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5'],
+          name: '',
+          selectable: false,
+          group: ScaleType.Linear
+        };
+        break;
+        case "completed-stories":
+          this.colorScheme = {
+            domain: ['#000074', '#880025', '#0F18BB', '#7a03ff', '#0738ff', '#ff63ff'],
+            name: '',
+            selectable: false,
+            group: ScaleType.Linear
+          };
+          break;
+          default:{}//already initialized
+    }
   }
 
   requestMetricData() {
