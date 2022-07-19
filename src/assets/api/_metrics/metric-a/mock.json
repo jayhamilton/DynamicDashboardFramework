@@ -3,7 +3,7 @@
   "yAxesLabel": "# metric a",
   "links": [
     {
-      "href": "/topic/micrcontent/metrica",
+      "href": "/assets/mcf-help/Content/Search.htm?q=frequency",
       "rel": "microcontent",
       "type": "GET"
     },

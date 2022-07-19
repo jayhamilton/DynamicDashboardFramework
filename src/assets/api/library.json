@@ -41,10 +41,10 @@
               },
               {
                 "key": "metric-a",
-                "value": "metric-b"
+                "value": "metric-a"
               },
               {
-                "key": "metric-a",
+                "key": "metric-b",
                 "value": "metric-b"
               }
             ],

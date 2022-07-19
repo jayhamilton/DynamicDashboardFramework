@@ -26,7 +26,6 @@ import { BarApiService } from './bar-chart/bar-api-service';
     GadgetGridCellHostComponent,
     BarChartComponent,
     AreaChartComponent
-
   ],
   imports: [
     CommonModule,
@@ -48,6 +47,7 @@ import { BarApiService } from './bar-chart/bar-api-service';
     FormsModule,
     MatChipsModule,
     NgxChartsModule
+
   ],
     exports: [
      GadgetGridCellHostComponent

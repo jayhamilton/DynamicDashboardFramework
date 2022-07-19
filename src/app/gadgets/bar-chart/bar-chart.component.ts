@@ -14,9 +14,10 @@ import { BarApiService } from './bar-api-service';
 export class BarChartComponent extends GadgetBase implements OnInit {
 
   data: any[] = [];
-  xAxisLabel = ""
-  legendTitle = ""
-  yAxisLabel = ""
+  xAxisLabel = "";
+  legendTitle = "";
+  yAxisLabel = "";
+  help="";
 
   colorScheme: Color = {
     domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5'],
@@ -42,6 +43,22 @@ export class BarChartComponent extends GadgetBase implements OnInit {
      * values and types of values above.
      */
 
+
+
+    if (this.isMissingPropertyValue()) {
+      this.inConfig = true;
+    } else {
+
+      this.requestDataFromAPI();
+    }
+  }
+
+  remove() {
+    this.eventService.emitGadgetDeleteEvent({ data: this.instanceId });
+  }
+
+  requestDataFromAPI(){
+
     /**
      * TODO
      * userName and password:  should be swapped out for a more appropriate authentication strategy.
@@ -49,22 +66,16 @@ export class BarChartComponent extends GadgetBase implements OnInit {
      * metric-type: could be a specific type could represent a specific type of metric that is supported by this stacked bar chart.
      */
 
-    if (this.isMissingPropertyValue()) {
-      this.inConfig = true;
-    } else {
-
-      this.barApiService.getData("endpointTarget", "metricType").subscribe(metricData => {
-        let data = metricData['data'];
-        Object.assign(this, { data });
-        this.legendTitle = metricData['legendTitle'];
-        this.yAxisLabel = metricData['yAxesLabel'];
-      });
-
-    }
-  }
-
-  remove() {
-    this.eventService.emitGadgetDeleteEvent({ data: this.instanceId });
+    this.barApiService.getData("endpointTarget", "metricType").subscribe(metricData => {
+      let data = metricData['data'];
+      Object.assign(this, { data });
+      this.legendTitle = metricData['legendTitle'];
+      this.yAxisLabel = metricData['yAxesLabel'];
+      /**TODO - create a service that iterates the links and establishes
+       * behavior based on the rel value.
+       */
+      this.help = metricData['links'][0]['href'];
+    });
   }
 
   propertyChangeEvent(propertiesJSON: string) {

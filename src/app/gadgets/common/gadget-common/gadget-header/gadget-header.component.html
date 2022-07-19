@@ -8,8 +8,8 @@
       You are in configuration mode</mat-chip>
   </mat-chip-list>
 
-  <button mat-icon-button class="help" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-    <mat-icon>help</mat-icon>
+  <button mat-icon-button (click)="launchHelp()" class="help" aria-label="help">
+   <mat-icon >help</mat-icon>
   </button>
 
   <button mat-icon-button gray class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
@@ -21,3 +21,4 @@
     <button mat-menu-item (click)="remove()">Remove</button>
   </mat-menu>
 </mat-card-header>
+
