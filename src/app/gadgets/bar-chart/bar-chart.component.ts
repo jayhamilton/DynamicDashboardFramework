@@ -17,7 +17,9 @@ export class BarChartComponent extends GadgetBase implements OnInit {
   xAxisLabel = "";
   legendTitle = "";
   yAxisLabel = "";
-  help="";
+  helpTopic = "";
+  helpMicroContent = "";
+  metricType = "";
 
   colorScheme: Color = {
     domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5'],
@@ -43,13 +45,10 @@ export class BarChartComponent extends GadgetBase implements OnInit {
      * values and types of values above.
      */
 
-
-
     if (this.isMissingPropertyValue()) {
       this.inConfig = true;
     } else {
-
-      this.requestDataFromAPI();
+      this.requestMetricData();
     }
   }
 
@@ -57,7 +56,7 @@ export class BarChartComponent extends GadgetBase implements OnInit {
     this.eventService.emitGadgetDeleteEvent({ data: this.instanceId });
   }
 
-  requestDataFromAPI(){
+  requestMetricData() {
 
     /**
      * TODO
@@ -66,7 +65,7 @@ export class BarChartComponent extends GadgetBase implements OnInit {
      * metric-type: could be a specific type could represent a specific type of metric that is supported by this stacked bar chart.
      */
 
-    this.barApiService.getData("endpointTarget", "metricType").subscribe(metricData => {
+    this.barApiService.getData(this.metricType).subscribe(metricData => {
       let data = metricData['data'];
       Object.assign(this, { data });
       this.legendTitle = metricData['legendTitle'];
@@ -74,20 +73,42 @@ export class BarChartComponent extends GadgetBase implements OnInit {
       /**TODO - create a service that iterates the links and establishes
        * behavior based on the rel value.
        */
-      this.help = metricData['links'][0]['href'];
+
+      this.setHelpLinks(metricData['links']);
+    });
+  }
+
+  setHelpLinks(links: Array<any>) {
+
+    links.forEach(link => {
+
+      switch (link['rel']) {
+        case 'microcontent':
+          this.helpMicroContent = link['href'];
+          break;
+        case 'topic':
+          this.helpTopic = link['href']; //used and passed to the component header.
+          break;
+
+        default: { }
+      }
     });
   }
 
   propertyChangeEvent(propertiesJSON: string) {
     //update internal props
     const updatedPropsObject = JSON.parse(propertiesJSON);
+    console.log(updatedPropsObject);
 
     if (updatedPropsObject.title != undefined) {
       this.title = updatedPropsObject.title;
     }
     if (updatedPropsObject.subtitle != undefined) {
       this.subtitle = updatedPropsObject.subtitle;
-      console.log.apply(this.subtitle);
+    }
+    if (updatedPropsObject.metric != undefined) {
+      this.metricType = updatedPropsObject.metric;
+      this.requestMetricData();
     }
 
     //persist changes
@@ -96,5 +117,4 @@ export class BarChartComponent extends GadgetBase implements OnInit {
       this.instanceId
     );
   }
-
 }

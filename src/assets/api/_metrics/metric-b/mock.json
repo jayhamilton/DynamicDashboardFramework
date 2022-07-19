@@ -1,9 +1,9 @@
 {
-  "legendTitle": "branches",
-  "yAxesLabel": "# pull-requests",
+  "legendTitle": "PI(s)",
+  "yAxesLabel": "# completed-stories",
   "links": [
     {
-      "href": "/assets/mcf-help/Content/Search.htm?q=pull-requests",
+      "href": "/assets/mcf-help/Content/Search.htm?q=completed-stories",
       "rel": "microcontent",
       "type": "GET"
     },

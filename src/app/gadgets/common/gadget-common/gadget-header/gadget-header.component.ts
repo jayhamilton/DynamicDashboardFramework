@@ -13,21 +13,19 @@ export class GadgetHeaderComponent implements OnInit {
   @Input() subtitle: string;
   @Input() iconpath: string;
   @Input() inConfig: boolean;
-  @Input() help: string = '';
+  @Input() helpTopic: string = '';
   menuLabel = 'Configure';
   constructor(private eventService:EventService) {
     this.title = '';
     this.subtitle = '';
     this.iconpath = '';
     this.inConfig = false;
-
   }
 
   ngOnInit(): void {
     if(this.inConfig){
       this.setMenuLabel();
     }
-
   }
 
   remove() {
@@ -40,9 +38,7 @@ export class GadgetHeaderComponent implements OnInit {
   }
 
   launchHelp(){
-
-    window.open(this.help, "_blank");
-
+    window.open(this.helpTopic, "_blank");
   }
 
   setMenuLabel(){

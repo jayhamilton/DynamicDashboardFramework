@@ -15,7 +15,23 @@ export class BarApiService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getData(endPoinTarget:string, metricType:string) {
+  getData(metricType:string) {
+
+    switch(metricType){
+      case "pull-requests":
+        this.apiEndPoint = "/assets/api/_metrics/metric-a/mock.json";
+        break;
+      case "completed-stories":
+        this.apiEndPoint = "/assets/api/_metrics/metric-b/mock.json";
+        break;
+      default:{
+        //this.apiEndPoint = "/assets/api/_metrics/metric-a/mock.json";
+      }
+
+    }
+
+
+
     let headers = new HttpHeaders({
       Authorization: 'Basic ' + btoa("" + ':' + ""),
       'Content-Type': 'application/json',

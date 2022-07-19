@@ -18,7 +18,7 @@
             "controlType": "textbox",
             "key": "title",
             "label": "Title",
-            "value": "Property Components",
+            "value": "Metric Data",
             "required": true,
             "order": 1
           },
@@ -26,7 +26,7 @@
             "controlType": "textbox",
             "key": "subtitle",
             "label": "Subtitle",
-            "value": "Product component subtitle",
+            "value": "Metric subtitle",
             "required": false,
             "order": 1
           },
@@ -40,12 +40,12 @@
                 "value": " "
               },
               {
-                "key": "metric-a",
-                "value": "metric-a"
+                "key": "pull-requests",
+                "value": "pull-requests"
               },
               {
-                "key": "metric-b",
-                "value": "metric-b"
+                "key": "completed-stories",
+                "value": "completed-stories"
               }
             ],
             "required": true,
