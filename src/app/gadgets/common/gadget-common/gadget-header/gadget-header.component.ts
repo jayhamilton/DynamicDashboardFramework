@@ -38,7 +38,7 @@ export class GadgetHeaderComponent implements OnInit {
   }
 
   launchHelp(){
-    window.open(this.helpTopic, "_blank");
+    window.open(this.helpTopic, "Help", "height=600,width=800");
   }
 
   setMenuLabel(){

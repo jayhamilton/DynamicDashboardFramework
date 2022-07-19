@@ -4,8 +4,6 @@ import { BoardService } from 'src/app/board/board.service';
 import { EventService } from 'src/app/eventservice/event.service';
 import { GadgetBase } from '../common/gadget-common/gadget-base/gadget.base';
 import { BarApiService } from './bar-api-service';
-
-
 @Component({
   selector: 'app-bar-chart',
   templateUrl: './bar-chart.component.html',
@@ -30,7 +28,6 @@ export class BarChartComponent extends GadgetBase implements OnInit {
 
   constructor(private eventService: EventService, private boardService: BoardService, private barApiService: BarApiService) {
     super();
-
   }
 
   ngOnInit(): void {
@@ -45,6 +42,8 @@ export class BarChartComponent extends GadgetBase implements OnInit {
      * values and types of values above.
      */
 
+    this.initializeProperties();
+
     if (this.isMissingPropertyValue()) {
       this.inConfig = true;
     } else {
@@ -52,6 +51,21 @@ export class BarChartComponent extends GadgetBase implements OnInit {
     }
   }
 
+  initializeProperties() {
+
+    /*
+    TODO specifically initialize the metricType. This is a property page property that would best be
+    set in the base class.
+  */
+
+    //iterate through the properties to find the metric property and get its value.
+    this.propertyPages[0].properties.forEach(property => {
+      let option = property['label'].toString().toLowerCase();
+      if (option === "metric") {
+        this.metricType = property['value'].toString().toLowerCase()
+      }
+    })
+  }
   remove() {
     this.eventService.emitGadgetDeleteEvent({ data: this.instanceId });
   }
@@ -70,9 +84,6 @@ export class BarChartComponent extends GadgetBase implements OnInit {
       Object.assign(this, { data });
       this.legendTitle = metricData['legendTitle'];
       this.yAxisLabel = metricData['yAxesLabel'];
-      /**TODO - create a service that iterates the links and establishes
-       * behavior based on the rel value.
-       */
 
       this.setHelpLinks(metricData['links']);
     });
@@ -84,10 +95,10 @@ export class BarChartComponent extends GadgetBase implements OnInit {
 
       switch (link['rel']) {
         case 'microcontent':
-          this.helpMicroContent = link['href'];
+          this.helpMicroContent = link['href']; //will be used in-line
           break;
         case 'topic':
-          this.helpTopic = link['href']; //used and passed to the component header.
+          this.helpTopic = link['href']; //used and passed to the component header's help icon.
           break;
 
         default: { }
@@ -98,7 +109,6 @@ export class BarChartComponent extends GadgetBase implements OnInit {
   propertyChangeEvent(propertiesJSON: string) {
     //update internal props
     const updatedPropsObject = JSON.parse(propertiesJSON);
-    console.log(updatedPropsObject);
 
     if (updatedPropsObject.title != undefined) {
       this.title = updatedPropsObject.title;
