@@ -27,7 +27,7 @@
           <mat-icon class="tip">live_help</mat-icon>
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <p>{{helpMicroContent}}</p>
+      <div [innerHtml] = helpMicroContent></div>
     </mat-expansion-panel>
   </mat-accordion>
 </mat-card>

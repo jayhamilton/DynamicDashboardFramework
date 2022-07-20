@@ -1,3 +1,4 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Color, ScaleType } from '@swimlane/ngx-charts';
 import { BoardService } from 'src/app/board/board.service';
@@ -27,7 +28,7 @@ export class BarChartComponent extends GadgetBase implements OnInit {
     group: ScaleType.Linear
   };
 
-  constructor(private eventService: EventService, private boardService: BoardService, private barApiService: BarApiService) {
+  constructor(private eventService: EventService, private boardService: BoardService, private barApiService: BarApiService, private httpClient: HttpClient) {
     super();
   }
 
@@ -37,12 +38,6 @@ export class BarChartComponent extends GadgetBase implements OnInit {
      * - board specific attributes
      * - establish an api session key
      */
-    /**
-     * TODO determine if this Bar Chart should be an implementation of
-     * an abstract METRIC type that has an interface to get the data based on
-     * values and types of values above.
-     */
-
     this.initializeProperties();
     this.switchColorScheme();
 
@@ -122,7 +117,7 @@ export class BarChartComponent extends GadgetBase implements OnInit {
 
       switch (link['rel']) {
         case 'microcontent':
-            //will be used in-line
+          //will be used in-line
           this.setMicroContent(link['href']);
           break;
         case 'topic':
@@ -156,10 +151,11 @@ export class BarChartComponent extends GadgetBase implements OnInit {
     );
   }
 
+  /** TODO FIX THIS HACK */
   setMicroContent(link: string) {
-
-    //use async to get file information and parse it to get the snippet.
-
-
+    this.httpClient.get<any>(link, { responseType: 'text' as 'json' }).subscribe(html => {
+      this.helpMicroContent = html;
+      //console.log(html);
+    })
   }
 }
