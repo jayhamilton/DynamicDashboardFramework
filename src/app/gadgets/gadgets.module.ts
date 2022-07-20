@@ -21,6 +21,7 @@ import { BarChartComponent } from './bar-chart/bar-chart.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { AreaChartComponent } from './area-chart/area-chart.component';
 import { BarApiService } from './bar-chart/bar-api-service';
+import { MatExpansionModule } from '@angular/material/expansion';
 @NgModule({
   declarations: [
     GadgetGridCellHostComponent,
@@ -46,7 +47,9 @@ import { BarApiService } from './bar-chart/bar-api-service';
     HttpClientModule,
     FormsModule,
     MatChipsModule,
-    NgxChartsModule
+    NgxChartsModule,
+    MatExpansionModule
+
 
   ],
     exports: [

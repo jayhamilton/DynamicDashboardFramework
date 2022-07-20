@@ -3,7 +3,7 @@
   "yAxesLabel": "# completed-stories",
   "links": [
     {
-      "href": "/assets/mcf-help/Content/Search.htm?q=completed-stories",
+      "href": "/assets/mcf-help/MicroContent/Resources/MicroContent/Engineering/CompletedStories/what-is-micro-content.htm",
       "rel": "microcontent",
       "type": "GET"
     },

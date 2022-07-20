@@ -15,9 +15,10 @@ export class BarChartComponent extends GadgetBase implements OnInit {
   xAxisLabel = "";
   legendTitle = "";
   yAxisLabel = "";
-  helpTopic = "";
+  helpTopicURL = "";
   helpMicroContent = "";
   metricType = "";
+  panelOpenState = false;
 
   colorScheme: Color = {
     domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5'],
@@ -67,14 +68,15 @@ export class BarChartComponent extends GadgetBase implements OnInit {
       }
     })
   }
+
   remove() {
     this.eventService.emitGadgetDeleteEvent({ data: this.instanceId });
   }
 
-  switchColorScheme(){
+  switchColorScheme() {
 
     //todo - this code relies too much on metricType options knowledge
-    switch(this.metricType){
+    switch (this.metricType) {
       case "pull-requests":
         this.colorScheme = {
           domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5'],
@@ -83,15 +85,15 @@ export class BarChartComponent extends GadgetBase implements OnInit {
           group: ScaleType.Linear
         };
         break;
-        case "completed-stories":
-          this.colorScheme = {
-            domain: ['#000074', '#880025', '#0F18BB', '#7a03ff', '#0738ff', '#ff63ff'],
-            name: '',
-            selectable: false,
-            group: ScaleType.Linear
-          };
-          break;
-          default:{}//already initialized
+      case "completed-stories":
+        this.colorScheme = {
+          domain: ['#000074', '#880025', '#0F18BB', '#7a03ff', '#0738ff', '#ff63ff'],
+          name: '',
+          selectable: false,
+          group: ScaleType.Linear
+        };
+        break;
+      default: { }//already initialized
     }
   }
 
@@ -109,8 +111,8 @@ export class BarChartComponent extends GadgetBase implements OnInit {
       Object.assign(this, { data });
       this.legendTitle = metricData['legendTitle'];
       this.yAxisLabel = metricData['yAxesLabel'];
-
       this.setHelpLinks(metricData['links']);
+
     });
   }
 
@@ -120,10 +122,11 @@ export class BarChartComponent extends GadgetBase implements OnInit {
 
       switch (link['rel']) {
         case 'microcontent':
-          this.helpMicroContent = link['href']; //will be used in-line
+            //will be used in-line
+          this.setMicroContent(link['href']);
           break;
         case 'topic':
-          this.helpTopic = link['href']; //used and passed to the component header's help icon.
+          this.helpTopicURL = link['href']; //used and passed to the component header's help icon.
           break;
 
         default: { }
@@ -151,5 +154,12 @@ export class BarChartComponent extends GadgetBase implements OnInit {
       propertiesJSON,
       this.instanceId
     );
+  }
+
+  setMicroContent(link: string) {
+
+    //use async to get file information and parse it to get the snippet.
+
+
   }
 }

@@ -5,3 +5,14 @@ mat-card-content {
 mat-card {
     margin-bottom: 15px;
 }
+.example-headers-align .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+.example-headers-align .mat-expansion-panel-header-title,
+.example-headers-align .mat-expansion-panel-header-description {
+  flex-basis: 0;
+}
+.tip{
+  color:#aaa;
+}
