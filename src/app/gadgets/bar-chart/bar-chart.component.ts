@@ -16,20 +16,20 @@ export class BarChartComponent extends GadgetBase implements OnInit {
   xAxisLabel = "";
   legendTitle = "";
   yAxisLabel = "";
-  helpTopicURL = "";
-  helpMicroContent = "";
   metricType = "";
   panelOpenState = false;
 
-  colorScheme: Color = {
-    domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5'],
-    name: '',
-    selectable: false,
-    group: ScaleType.Linear
-  };
+  colorScheme: Color;
 
   constructor(private eventService: EventService, private boardService: BoardService, private barApiService: BarApiService, private httpClient: HttpClient) {
     super();
+
+    this.colorScheme = {
+      domain: [],
+      name: '',
+      selectable: false,
+      group: ScaleType.Linear
+    };
   }
 
   ngOnInit(): void {
@@ -88,7 +88,7 @@ export class BarChartComponent extends GadgetBase implements OnInit {
           group: ScaleType.Linear
         };
         break;
-      default: { }//already initialized
+      default: {}
     }
   }
 
@@ -107,25 +107,8 @@ export class BarChartComponent extends GadgetBase implements OnInit {
       this.legendTitle = metricData['legendTitle'];
       this.yAxisLabel = metricData['yAxesLabel'];
       this.setHelpLinks(metricData['links']);
+      this.setMicroContent();
 
-    });
-  }
-
-  setHelpLinks(links: Array<any>) {
-
-    links.forEach(link => {
-
-      switch (link['rel']) {
-        case 'microcontent':
-          //will be used in-line
-          this.setMicroContent(link['href']);
-          break;
-        case 'topic':
-          this.helpTopicURL = link['href']; //used and passed to the component header's help icon.
-          break;
-
-        default: { }
-      }
     });
   }
 
@@ -150,12 +133,10 @@ export class BarChartComponent extends GadgetBase implements OnInit {
       this.instanceId
     );
   }
-
-  /** TODO FIX THIS HACK */
-  setMicroContent(link: string) {
-    this.httpClient.get<any>(link, { responseType: 'text' as 'json' }).subscribe(html => {
+  /** TODO FIX THIS HACK and move this to the gadget base class*/
+  setMicroContent() {
+    this.httpClient.get<any>(this.helpMicroContentURL, { responseType: 'text' as 'json' }).subscribe(html => {
       this.helpMicroContent = html;
-      //console.log(html);
     })
   }
 }

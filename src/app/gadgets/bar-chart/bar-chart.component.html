@@ -6,7 +6,7 @@
   <mat-card-content *ngIf="!inConfig">
     <ngx-charts-bar-vertical-stacked [scheme]="colorScheme" [results]="data" [xAxisLabel]="xAxisLabel"
       [legendTitle]="legendTitle" [yAxisLabel]="yAxisLabel" [legend]="true" [showXAxisLabel]="true"
-      [showYAxisLabel]="true" [xAxis]="true" [yAxis]="true" [gradient]="true" >
+      [showYAxisLabel]="true" [xAxis]="true" [yAxis]="true" [gradient]="true">
     </ngx-charts-bar-vertical-stacked>
   </mat-card-content>
 
@@ -23,11 +23,10 @@
         <mat-panel-title>
         </mat-panel-title>
         <mat-panel-description>
-          Metric Tip
-          <mat-icon class="tip">live_help</mat-icon>
+          Metric Tip!
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <div [innerHtml] = helpMicroContent></div>
+      <div [innerHtml]=helpMicroContent></div>
     </mat-expansion-panel>
   </mat-accordion>
 </mat-card>

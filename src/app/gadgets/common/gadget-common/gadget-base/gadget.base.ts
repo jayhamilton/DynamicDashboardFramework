@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { IAction, IGadget, IPropertyPage, ITag } from './gadget.model';
 
 export abstract class GadgetBase implements IGadget {
@@ -11,6 +12,10 @@ export abstract class GadgetBase implements IGadget {
   propertyPages: IPropertyPage[];
   actions: IAction[];
   inConfig: boolean;
+  helpTopicURL = "";
+  helpMicroContentURL="";
+  helpMicroContent = "";
+  ;
 
   constructor() {
     this.componentType = '';
@@ -23,6 +28,7 @@ export abstract class GadgetBase implements IGadget {
     this.propertyPages = [];
     this.actions = [];
     this.inConfig = false;
+
   }
 
   setConfiguration(gadgetData: IGadget) {
@@ -68,4 +74,22 @@ export abstract class GadgetBase implements IGadget {
     this.inConfig = !this.inConfig;
   }
 
-}
+  setHelpLinks(links: Array<any>) {
+
+    links.forEach(link => {
+
+      switch (link['rel']) {
+        case 'microcontent':
+          //will be used in-line
+          this.helpMicroContentURL = link['href'];
+          break;
+        case 'topic':
+          this.helpTopicURL = link['href']; //used and passed to the component header's help icon.
+          break;
+
+        default: { }
+      }
+    });
+  }
+
+  }
