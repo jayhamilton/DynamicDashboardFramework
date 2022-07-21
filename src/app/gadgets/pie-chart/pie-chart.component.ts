@@ -4,13 +4,13 @@ import { Color, ScaleType } from '@swimlane/ngx-charts';
 import { BoardService } from 'src/app/board/board.service';
 import { EventService } from 'src/app/eventservice/event.service';
 import { GadgetBase } from '../common/gadget-common/gadget-base/gadget.base';
-import { BarApiService } from './bar-api-service';
+import { PieApiService } from './pie-api-service';
 @Component({
-  selector: 'app-bar-chart',
-  templateUrl: './bar-chart.component.html',
-  styleUrls: ['./bar-chart.component.scss']
+  selector: 'app-pie-chart',
+  templateUrl: './pie-chart.component.html',
+  styleUrls: ['./pie-chart.component.scss']
 })
-export class BarChartComponent extends GadgetBase implements OnInit {
+export class PieChartComponent extends GadgetBase implements OnInit {
 
   data: any[] = [];
   xAxisLabel = "";
@@ -21,7 +21,7 @@ export class BarChartComponent extends GadgetBase implements OnInit {
 
   colorScheme: Color;
 
-  constructor(private eventService: EventService, private boardService: BoardService, private barApiService: BarApiService, private httpClient: HttpClient) {
+  constructor(private eventService: EventService, private boardService: BoardService, private pieApiService: PieApiService, private httpClient: HttpClient) {
     super();
 
     this.colorScheme = {
@@ -88,14 +88,6 @@ export class BarChartComponent extends GadgetBase implements OnInit {
           group: ScaleType.Linear
         };
         break;
-      case "pipeline-duration":
-        this.colorScheme = {
-          domain: ['#FF35D7', '#080025', '#0F08BB', '#7a03ff', '#0738ff', '#ff63ff'],
-          name: '',
-          selectable: false,
-          group: ScaleType.Linear
-        };
-        break;
       default: {}
     }
   }
@@ -109,7 +101,7 @@ export class BarChartComponent extends GadgetBase implements OnInit {
      * metric-type: could be a specific type could represent a specific type of metric that is supported by this stacked bar chart.
      */
 
-    this.barApiService.getData(this.metricType).subscribe(metricData => {
+    this.pieApiService.getData(this.metricType).subscribe(metricData => {
       let data = metricData['data'];
       Object.assign(this, { data });
       this.legendTitle = metricData['legendTitle'];

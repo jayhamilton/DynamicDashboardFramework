@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 
 @Injectable()
-export class BarApiService {
+export class PieApiService {
 
   /* This service will need to get data from an endpoint. That data and endpoint will be dictated
   by the
@@ -11,7 +11,7 @@ export class BarApiService {
  */
 
   //use MOCK api endpoint
-  apiEndPoint = "/assets/api/_metrics/metric-a/mock.json";
+  apiEndPoint = "/assets/api/_metrics/metric-c/mock.json";
 
   constructor(private httpClient: HttpClient) { }
 
@@ -19,16 +19,12 @@ export class BarApiService {
 
     switch(metricType){
       case "pull-requests":
-        this.apiEndPoint = "/assets/api/_metrics/metric-a/mock.json";
+        this.apiEndPoint = "/assets/api/_metrics/metric-ca/mock.json";
         break;
       case "completed-stories":
-        this.apiEndPoint = "/assets/api/_metrics/metric-b/mock.json";
-        break;
-      case "pipeline-duration":
         this.apiEndPoint = "/assets/api/_metrics/metric-c/mock.json";
         break;
       default:{
-        //this.apiEndPoint = "/assets/api/_metrics/metric-a/mock.json";
       }
 
     }

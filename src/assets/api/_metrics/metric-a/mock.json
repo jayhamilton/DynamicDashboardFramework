@@ -3,7 +3,7 @@
   "yAxesLabel": "# pull-requests",
   "links": [
     {
-      "href": "/assets/mcf-help/MicroContent/Resources/MicroContent/Engineering/PullRequests/what-is-micro-content.htm",
+      "href": "/assets/mcf-help/MicroContent/Resources/MicroContent/Engineering/pull-requests/what-is-micro-content.htm",
       "rel": "microcontent",
       "type": "GET"
     },

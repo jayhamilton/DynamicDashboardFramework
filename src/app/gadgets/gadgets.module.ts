@@ -22,10 +22,13 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { AreaChartComponent } from './area-chart/area-chart.component';
 import { BarApiService } from './bar-chart/bar-api-service';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { PieApiService } from './pie-chart/pie-api-service';
+import { PieChartComponent } from './pie-chart/pie-chart.component';
 @NgModule({
   declarations: [
     GadgetGridCellHostComponent,
     BarChartComponent,
+    PieChartComponent,
     AreaChartComponent
   ],
   imports: [
@@ -56,7 +59,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
      GadgetGridCellHostComponent
     ],
     providers: [
-      BarApiService
+      BarApiService,
+      PieApiService
 
     ]
 

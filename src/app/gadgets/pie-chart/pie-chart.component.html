@@ -1,0 +1,32 @@
+<mat-card [cdkDragDisabled]="inConfig" cdkDrag>
+  <app-gadget-header [title]="title" [subtitle]="subtitle" [iconpath]="icon" (removeEvent)="remove()"
+    [inConfig]="inConfig" (toggleConfigModeEvent)="toggleConfigMode()" [helpTopic]="helpTopicURL">
+  </app-gadget-header>
+
+  <mat-card-content *ngIf="!inConfig">
+    <ngx-charts-bar-vertical-stacked [scheme]="colorScheme" [results]="data" [xAxisLabel]="xAxisLabel"
+      [legendTitle]="legendTitle" [yAxisLabel]="yAxisLabel" [legend]="true" [showXAxisLabel]="true"
+      [showYAxisLabel]="true" [xAxis]="true" [yAxis]="true" [gradient]="true">
+    </ngx-charts-bar-vertical-stacked>
+  </mat-card-content>
+
+  <mat-card-content *ngIf="inConfig">
+    <app-dynamic-form [gadgetTags]="tags" [propertyPages]="propertyPages" [instanceId]="instanceId"
+      [tabIndex]="isMissingPropertyValue() ? 1 : 0" (updatePropertiesEvent)="propertyChangeEvent($event)">
+    </app-dynamic-form>
+  </mat-card-content>
+
+  <mat-accordion class="example-headers-align">
+
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+        </mat-panel-title>
+        <mat-panel-description>
+          Metric Tip!
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div [innerHtml]=helpMicroContent></div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</mat-card>

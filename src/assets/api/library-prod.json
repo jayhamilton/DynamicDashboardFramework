@@ -42,6 +42,10 @@
               {
                 "key": "completed-stories",
                 "value": "completed-stories"
+              },
+              {
+                "key": "pipeline-duration",
+                "value": "pipeline-duration"
               }
             ],
             "value":"",
